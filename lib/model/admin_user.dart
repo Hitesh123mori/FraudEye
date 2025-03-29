@@ -1,13 +1,13 @@
 
 class AdminUser {
 
-  String? userID;
+  String? adminID;
   String? email;
   String? name;
   String? createAt;
 
   AdminUser({
-    this.userID,
+    this.adminID,
     this.email,
     this.createAt,
     this.name,
@@ -15,7 +15,7 @@ class AdminUser {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['userID'] = userID;
+    map['adminID'] = adminID;
     map['email'] = email;
     map['name'] = name ;
     map['createAt'] =  createAt;
@@ -24,7 +24,7 @@ class AdminUser {
 
   factory AdminUser.fromJson(dynamic json) {
     return AdminUser(
-        userID: json['userID'],
+        adminID: json['adminID'],
         email:json['email'],
         name:json['name'],
         createAt: json['createAt']

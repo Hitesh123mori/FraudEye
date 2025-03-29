@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hack_nu_thon_6/apis/auth_apis/auth_apis.dart';
 import 'package:hack_nu_thon_6/main.dart';
 import 'package:hack_nu_thon_6/provider/router_provider.dart';
 import 'package:hack_nu_thon_6/utils/helper_functions/web_toast.dart';
@@ -37,20 +38,21 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // Function for registering user
   Future<void> registerUser() async {
-    // try {
-    //   await AuthApi.signUp(
-    //     context,
-    //     _emailController.text,
-    //     _passwordController.text,
-    //     _userNameController.text,
-    //   );
-    // } catch (error) {
-    //   WebToasts.showToastification(
-    //       "Error",
-    //       "Something went wrong",
-    //       Icon(Icons.error, color: Colors.red),
-    //       context);
-    // }
+    try {
+      await AuthApi.signUp(
+        context,
+        _emailController.text,
+        _passwordController.text,
+        _userNameController.text,
+        isBank
+      );
+    } catch (error) {
+      WebToasts.showToastification(
+          "Error",
+          "Something went wrong",
+          Icon(Icons.error, color: Colors.red),
+          context);
+    }
   }
 
   // General validator

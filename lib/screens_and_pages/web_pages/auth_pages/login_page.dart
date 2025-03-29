@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hack_nu_thon_6/apis/auth_apis/auth_apis.dart';
 import 'package:hack_nu_thon_6/provider/router_provider.dart';
 import 'package:hack_nu_thon_6/utils/helper_functions/web_toast.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
@@ -33,20 +34,20 @@ class _LoginPageState extends State<LoginPage> {
 
 
   Future<void> loginUser() async {
-    // try {
-    //   await AuthApi.signIn(
-    //     context,
-    //     _emailController.text,
-    //     _passwordController.text,
-    //   );
-    // } catch (error) {
-    //   WebToasts.showToastification(
-    //       "Error",
-    //       "Something went wrong",
-    //       Icon(Icons.error, color: Colors.red),
-    //       context);
-    //   print(error);
-    // }
+    try {
+      await AuthApi.signIn(
+        context,
+        _emailController.text,
+        _passwordController.text,
+      );
+    } catch (error) {
+      WebToasts.showToastification(
+          "Error",
+          "Something went wrong",
+          Icon(Icons.error, color: Colors.red),
+          context);
+      // print(error);
+    }
   }
 
   @override

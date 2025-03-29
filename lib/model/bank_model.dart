@@ -1,13 +1,13 @@
 
 class BankModel {
 
-  String? userID;
+  String? bankID;
   String? email;
   String? name;
   String? createAt;
 
   BankModel({
-    this.userID,
+    this.bankID,
     this.email,
     this.createAt,
     this.name,
@@ -15,7 +15,7 @@ class BankModel {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['userID'] = userID;
+    map['bankID'] = bankID;
     map['email'] = email;
     map['name'] = name ;
     map['createAt'] =  createAt;
@@ -24,7 +24,7 @@ class BankModel {
 
   factory BankModel.fromJson(dynamic json) {
     return BankModel(
-        userID: json['userID'],
+        bankID: json['userID'],
         email:json['email'],
         name:json['name'],
         createAt: json['createAt']
