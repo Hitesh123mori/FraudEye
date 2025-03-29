@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hack_nu_thon_6/screens_and_pages//web_pages/langing_page/landing_page.dart';
 import 'package:hack_nu_thon_6/screens_and_pages//web_pages/langing_page/main_layout.dart';
-import 'package:hack_nu_thon_6/screens_and_pages//web_pages/temp_page_dart.dart';
+import 'package:hack_nu_thon_6/screens_and_pages/web_pages/auth_pages/login_page.dart';
+import 'package:hack_nu_thon_6/screens_and_pages/web_pages/auth_pages/register_page.dart';
 
 
 final GoRouter router = GoRouter(
@@ -13,12 +14,22 @@ final GoRouter router = GoRouter(
         MainLayout(child: LandingPage()),
       ),
     ),
+
     GoRoute(
-      path: '/firstpage',
+      path: '/login',
       pageBuilder: (context, state) => _noAnimationPage(
-        const MainLayout(child: TempPageDart()),
+        MainLayout(child: LoginPage()),
       ),
     ),
+
+    GoRoute(
+      path: '/register',
+      pageBuilder: (context, state) => _noAnimationPage(
+        MainLayout(child: RegisterPage()),
+      ),
+    ),
+
+
     ],
 );
 

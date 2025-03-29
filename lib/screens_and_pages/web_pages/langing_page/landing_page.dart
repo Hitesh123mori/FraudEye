@@ -11,15 +11,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 5), () {
-      if (mounted) {
-        context.go('/firstpage');
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

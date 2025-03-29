@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart' ;
 import 'package:hack_nu_thon_6/helper_screens/select_platform.dart';
+import 'package:hack_nu_thon_6/provider/router_provider.dart';
+import 'package:provider/provider.dart';
 
+late Size? mq ;
 
 void main(){
   runApp(
-    MyApp(),
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context)=>RouterProvider()),
+          ],
+          child: MyApp())
   );
 }
 
