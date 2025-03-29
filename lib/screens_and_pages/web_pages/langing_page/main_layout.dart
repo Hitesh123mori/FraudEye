@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hack_nu_thon_6/provider/router_provider.dart';
+import 'package:hack_nu_thon_6/provider/user_provider.dart';
 import 'package:hack_nu_thon_6/utils/logo.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/navbar/custom_button2.dart';
@@ -22,7 +23,7 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RouterProvider>(builder: (context,routerProvider,child){
+    return Consumer<RouterProvider>(builder: (context, routerProvider, child) {
       return Scaffold(
         backgroundColor: AppColors.theme['backgroundColor'],
         appBar: AppBar(

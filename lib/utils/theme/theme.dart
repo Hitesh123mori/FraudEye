@@ -18,10 +18,8 @@ class  AppColors {
     "theme1": {
       "backgroundColor" :hexStringToColors("#FFFEFA"),
       "primaryColor" :hexStringToColors("#305CDE"),
-      "deepPurpleColor" :hexStringToColors("#8300CE"),
       "secondaryColor":hexStringToColors("#6E7076"),
       "ghostWhiteColor":hexStringToColors("#F5F5F5"),
-      "podcastColor":hexStringToColors("#C93224"),
     },
   };
 

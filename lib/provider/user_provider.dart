@@ -51,12 +51,24 @@ class UserProvider extends ChangeNotifier {
   Future logOut() async {
     await Config.auth.signOut();
     user = null;
+    bank = null ;
+    admin = null;
     notifyListeners();
   }
 
 
-  bool isLoggedIn() {
-    return user != null && Config.auth.currentUser != null;
+
+  bool isLoggedInUser() {
+
+    return (user != null && Config.auth.currentUser != null) ;
+
+  }
+
+  bool isLoggedInBank() {
+    return (bank != null  && Config.auth.currentUser != null);
+  }
+  bool isLoggedInAdmin() {
+    return (admin != null && Config.auth.currentUser != null);
   }
 
 
