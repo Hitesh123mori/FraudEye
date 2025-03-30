@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/apis/init/config.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/buttons/custom_button.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class OptionTwoScreen extends StatefulWidget {
   @override
@@ -16,6 +17,21 @@ class OptionTwoScreen extends StatefulWidget {
 }
 
 class _OptionTwoScreenState extends State<OptionTwoScreen> {
+
+  List<String> categories = [
+    'Health Care',
+    'Credit Card',
+    'Financial statement fraud detection',
+    'Loan fraud detection'
+  ];
+
+  List<Icon> cicons = [
+    Icon(Icons.health_and_safety_outlined),
+    Icon(Icons.credit_card),
+    Icon(Icons.report_outlined),
+    Icon(Icons.money),
+  ] ;
+  
   final bool isLoading = false;
   String? fileName;
   Uint8List? fileBytes;
@@ -179,48 +195,45 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 10),
-        Row(
-          children: [
-            for (var category in [
-              'Option 1',
-              'Option 2',
-              'Option 3',
-              'Option 4'
-            ])
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedCategory = category;
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.theme['op${category.split(' ')[1]}']
-                          .withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: selectedCategory == category
-                            ? AppColors.theme['op${category.split(' ')[1]}']
-                            : Colors.transparent,
-                        width: 2,
-                      ),
+
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: List.generate(categories.length, (i) {
+            return MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedCategory = categories[i];
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.theme['op${i + 1}']?.withOpacity(0.5) ?? Colors.grey.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: selectedCategory == categories[i]
+                          ? (AppColors.theme['op${i + 1}'] ?? Colors.blue)
+                          : Colors.transparent,
+                      width: 2,
                     ),
-                    child: Row(
-                      children: [
-                        Icon(Icons.medical_information_outlined),
-                        SizedBox(width: 5),
-                        Text(category),
-                      ],
-                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      cicons[i],
+                      SizedBox(width: 5),
+                      Text(categories[i]),
+                    ],
                   ),
                 ),
               ),
-          ],
+            );
+          }),
         ),
+
         SizedBox(height: 20),
 
         Row(

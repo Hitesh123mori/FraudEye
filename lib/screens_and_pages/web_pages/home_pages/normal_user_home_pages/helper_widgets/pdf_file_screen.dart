@@ -13,6 +13,23 @@ class OptionThreeScreen extends StatefulWidget {
 }
 
 class _OptionThreeScreenState extends State<OptionThreeScreen> {
+
+  List<String> categories = [
+    'Health Care',
+    'Credit Card',
+    'Financial statement fraud detection',
+    'Loan fraud detection'
+  ];
+
+  List<Icon> cicons = [
+    Icon(Icons.health_and_safety_outlined),
+    Icon(Icons.credit_card),
+    Icon(Icons.report_outlined),
+    Icon(Icons.money),
+  ] ;
+
+
+
   String? fileName;
   bool isLoading = false;
   Uint8List? fileBytes;
@@ -135,41 +152,42 @@ class _OptionThreeScreenState extends State<OptionThreeScreen> {
           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 10),
-        Row(
-          children: [
-            for (var category in ['Option 1', 'Option 2', 'Option 3', 'Option 4'])
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedCategory = category;
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.theme['op${category.split(' ')[1]}'].withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: selectedCategory == category
-                            ? AppColors.theme['op${category.split(' ')[1]}']
-                            : Colors.transparent,
-                        width: 2,
-                      ),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: List.generate(categories.length, (i) {
+            return MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedCategory = categories[i];
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.theme['op${i + 1}']?.withOpacity(0.5) ?? Colors.grey.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: selectedCategory == categories[i]
+                          ? (AppColors.theme['op${i + 1}'] ?? Colors.blue)
+                          : Colors.transparent,
+                      width: 2,
                     ),
-                    child: Row(
-                      children: [
-                        Icon(Icons.book),
-                        SizedBox(width: 5),
-                        Text(category),
-                      ],
-                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      cicons[i],
+                      SizedBox(width: 5),
+                      Text(categories[i]),
+                    ],
                   ),
                 ),
               ),
-          ],
+            );
+          }),
         ),
         SizedBox(height: 20),
         Row(
