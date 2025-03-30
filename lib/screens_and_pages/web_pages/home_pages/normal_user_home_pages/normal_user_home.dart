@@ -186,13 +186,13 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                                 text: 'Frauds',
                                   role :"user"
                               ),
-                              SidebarItem(
-                                optionKey: "trash",
-                                onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("trash"),
-                                icon: Icons.delete_outline_outlined,
-                                text: 'Trash',
-                                  role :"user"
-                              ),
+                              // SidebarItem(
+                              //   optionKey: "trash",
+                              //   onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("trash"),
+                              //   icon: Icons.delete_outline_outlined,
+                              //   text: 'Trash',
+                              //     role :"user"
+                              // ),
                             ],
                           ),
                         ),
@@ -340,8 +340,8 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                               if(sidebarProvider.current=="frauds")
                                 SidebarFraud(),
 
-                              if(sidebarProvider.current=="trash")
-                                SidebarTrash(),
+                              // if(sidebarProvider.current=="trash")
+                              //   SidebarTrash(),
 
                             ],
                           ),
