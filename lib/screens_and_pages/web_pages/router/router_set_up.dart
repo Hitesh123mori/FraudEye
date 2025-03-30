@@ -10,7 +10,7 @@ import 'package:hack_nu_thon_6/screens_and_pages/web_pages/home_pages/normal_use
 
 
 final GoRouter router = GoRouter(
-  // initialLocation: '/home-bank',
+  initialLocation: '/',
   routes: <RouteBase>[
     GoRoute(
       path: '/',

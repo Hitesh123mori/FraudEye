@@ -25,6 +25,10 @@ class  AppColors {
       "op2" : hexStringToColors("#C6DEF1"),
       "op3" : hexStringToColors("#DBCDF0"),
       "op4" : hexStringToColors("#F2C6DE"),
+      
+      
+      "red" :hexStringToColors("#FF7F7F"),
+      "green" : hexStringToColors("#A8DCAB"),
 
     },
   };

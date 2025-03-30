@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_popup/flutter_popup.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/main.dart';
 import 'package:hack_nu_thon_6/provider/bank_user_sidebar_provider.dart';
 import 'package:hack_nu_thon_6/provider/normal_user_sidebar_provider.dart';
@@ -269,11 +271,55 @@ class _BankUserHomeState extends State<BankUserHome> {
                                 ),
                               ),
 
-                              //profile button
-                              CircleAvatar(
-                                radius: 25,
-                                backgroundColor: AppColors.theme['primaryColor'],
-                              )
+
+                              CustomPopup(
+                                  barrierColor: Colors.transparent,
+                                  backgroundColor: Colors.white,
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 2),
+                                  content: Container(
+                                    height: 100,
+                                    width: 250,
+                                    color: AppColors.theme['backgroundColor'],
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                CircleAvatar(
+                                                  radius: 25,
+                                                  child: Text(userProvider.user?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                                                  backgroundColor: AppColors.theme['primaryColor'].withOpacity(0.6),
+                                                ),
+                                                SizedBox(width: 5,),
+                                                Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(userProvider.user?.name ?? "",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                                                    Text(userProvider.user?.email ?? "",style: TextStyle(fontSize: 14),),
+                                                  ],
+                                                )
+                                              ],
+                                            )
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  child:MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: CircleAvatar(
+                                      radius: 25,
+                                      child: Text(userProvider.user?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                                      backgroundColor: AppColors.theme['primaryColor'].withOpacity(0.6),
+                                    ),
+                                  )
+                              ),
 
                             ],
                           ),
