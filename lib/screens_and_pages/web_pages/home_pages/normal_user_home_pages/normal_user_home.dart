@@ -14,6 +14,8 @@ import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/sidebar/sidebar_item.dart';
 import 'package:provider/provider.dart';
 
+import 'helper_widgets/custom_dialog_box.dart';
+
 class NormalUserHome extends StatefulWidget {
   static const route = "/home-user";
   static const fullRoute = "/home-user";
@@ -109,31 +111,41 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                          SizedBox(height: 10,),
 
                          /// add button here
-                         Container(
-                           height: 50,
-                           width: 100,
-                           decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(15),
-                             color: AppColors.theme['backgroundColor'],
-                             boxShadow: [
-                               BoxShadow(
-                                 color: Colors.black.withOpacity(0.2),
-                                 blurRadius: 6,
-                                 offset: const Offset(2, 2),
-                               ),
-                             ],
-                           ),
-                           child: Row(
-                             mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                               Icon(Icons.add),
-                               SizedBox(height: 20,),
-                               Text("ADD"),
-                             ],
+                       MouseRegion(
+                         cursor: SystemMouseCursors.click,
+                         child: GestureDetector(
+                           onTap: () {
+
+                             showCustomDialog(context);
+
+                           },
+                           child: Container(
+                             height: 50,
+                             width: 100,
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(15),
+                               color: AppColors.theme['backgroundColor'],
+                               boxShadow: [
+                                 BoxShadow(
+                                   color: Colors.black.withOpacity(0.2),
+                                   blurRadius: 6,
+                                   offset: const Offset(2, 2),
+                                 ),
+                               ],
+                             ),
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Icon(Icons.add),
+                                 SizedBox(width: 8),
+                                 Text("ADD"),
+                               ],
+                             ),
                            ),
                          ),
+                       ),
 
-                         Divider(),
+                       Divider(),
                        ],
                      ),
                    ),
@@ -296,4 +308,15 @@ class _NormalUserHomeState extends State<NormalUserHome> {
           ));
     });
   }
+
+
+  ///dialog box
+  void showCustomDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => CustomDialogBox(),
+    );
+  }
+
 }
+

@@ -20,6 +20,12 @@ class  AppColors {
       "primaryColor" :hexStringToColors("#305CDE"),
       "secondaryColor":hexStringToColors("#6E7076"),
       "ghostWhiteColor":hexStringToColors("#F5F5F5"),
+
+      "op1" : hexStringToColors("#C9E4DE"),
+      "op2" : hexStringToColors("#C6DEF1"),
+      "op3" : hexStringToColors("#DBCDF0"),
+      "op4" : hexStringToColors("#F2C6DE"),
+
     },
   };
 

@@ -8,19 +8,20 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final Color bgColor;
   final VoidCallback onTap;
-  bool? isLoading = false;
-
+  final double textSize;
+  final bool isLoading;
 
   CustomButton({
     super.key,
     required this.height,
     required this.width,
+    this.loadWidth,
     required this.textColor,
     required this.bgColor,
     required this.onTap,
     required this.title,
-    this.isLoading,
-    this.loadWidth,
+    this.isLoading = false,
+    this.textSize = 18,
   });
 
   @override
@@ -32,41 +33,40 @@ class CustomButton extends StatelessWidget {
           duration: Duration(milliseconds: 500),
           curve: Curves.easeInOut,
           height: height,
-          width: isLoading! ? loadWidth : width,
+          width: isLoading ? loadWidth ?? width : width,
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Center(
-            child: isLoading!
+            child: isLoading
                 ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                    child: Container(
-                      height: 25,
-                      width: 25,
-                      child: CircularProgressIndicator(
-                        color: textColor,
-                      ),
-                    )),
-                SizedBox(width:10,),
+                SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator(color: textColor),
+                ),
+                SizedBox(width: 10),
                 Text(
                   "Wait...",
                   style: TextStyle(
-                      color: textColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: textSize,
+                  ),
                 ),
               ],
             )
                 : Text(
               title,
               style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18),
+                color: textColor,
+                fontWeight: FontWeight.bold,
+                fontSize: textSize,
+              ),
             ),
-          ),
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),

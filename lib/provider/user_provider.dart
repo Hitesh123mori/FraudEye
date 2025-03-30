@@ -29,9 +29,13 @@ class UserProvider extends ChangeNotifier {
 
     String? uid = Config.auth.currentUser?.uid;
 
-     isBank = await AuthApi.userExistsById(uid ?? "","bank_users") ;
-     isAdmin = await AuthApi.userExistsById(uid ?? "","admins") ;
-     isUser = await AuthApi.userExistsById(uid ?? "","normal_users") ;
+    try{
+      isBank = await AuthApi.userExistsById(uid ?? "","bank_users") ;
+      isAdmin = await AuthApi.userExistsById(uid ?? "","admins") ;
+      isUser = await AuthApi.userExistsById(uid ?? "","normal_users") ;
+    }catch(e){
+      print(e) ;
+    }
 
      if(isBank){
        bank = BankModel.fromJson(await BankUserApis.getUserById(uid ?? "")) ;
