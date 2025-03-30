@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart' ;
 
 
-class NormalUserSidebarProvider extends ChangeNotifier{
+class BankUserSidebarProvider extends ChangeNotifier{
 
 
   Map<String, bool> sidebarOptions = {
-    "home": true,
-    "chart": false,
-    "reports": false,
-    "frauds": false,
-    "trash": false,
+    "bhome": true,
+    "bchart": false,
+    "breports": false,
+    "bfrauds": false,
+    "btrash": false,
   };
 
-  String current = "home";
+  String current = "bhome";
 
   void updateCurrent(String option) {
     sidebarOptions[current] = false;

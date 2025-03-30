@@ -161,30 +161,35 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                                 onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("home"),
                                 icon: Icons.home_outlined,
                                 text: 'Home',
+                                role :"user"
                               ),
                               SidebarItem(
                                 optionKey: "chart",
                                 onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("chart"),
                                 icon: Icons.add_chart,
                                 text: 'Chart Analysis',
+                                  role :"user"
                               ),
                               SidebarItem(
                                 optionKey: "reports",
                                 onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("reports"),
                                 icon: Icons.file_copy_outlined,
                                 text: 'Reports',
+                                  role :"user"
                               ),
                               SidebarItem(
                                 optionKey: "frauds",
                                 onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("frauds"),
                                 icon: Icons.report_gmailerrorred,
                                 text: 'Frauds',
+                                  role :"user"
                               ),
                               SidebarItem(
                                 optionKey: "trash",
                                 onTap: () => Provider.of<NormalUserSidebarProvider>(context, listen: false).updateCurrent("trash"),
                                 icon: Icons.delete_outline_outlined,
                                 text: 'Trash',
+                                  role :"user"
                               ),
                             ],
                           ),

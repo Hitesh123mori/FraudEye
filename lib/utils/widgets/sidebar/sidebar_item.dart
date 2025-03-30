@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_nu_thon_6/provider/bank_user_sidebar_provider.dart';
 import 'package:hack_nu_thon_6/provider/normal_user_sidebar_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -7,6 +8,7 @@ class SidebarItem extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
   final String text;
+  final String role;
 
   const SidebarItem({
     Key? key,
@@ -14,12 +16,23 @@ class SidebarItem extends StatelessWidget {
     required this.onTap,
     required this.icon,
     required this.text,
+    required this.role,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<NormalUserSidebarProvider>(context);
-    bool isSelected = provider.current == optionKey;
+
+    bool isSelected = false;
+
+    if(role == "bank"){
+      final provider = Provider.of<BankUserSidebarProvider>(context);
+      isSelected = provider.current == optionKey;
+    }else if(role == "admin"){
+
+    }else {
+      final provider = Provider.of<NormalUserSidebarProvider>(context);
+      isSelected = provider.current == optionKey;
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
