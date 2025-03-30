@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "296920310204",
+    "project_id": "hacknuthon-5ae21",
+    "storage_bucket": "hacknuthon-5ae21.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296920310204:android:b2fa4eed06bd4b1adb4bb9",
+        "android_client_info": {
+          "package_name": "com.example.hack_nu_thon_6"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcuTOJOaRbNIvsG1y-OsyV9giw3m_EI20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
