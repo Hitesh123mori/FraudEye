@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/main.dart';
+import 'package:hack_nu_thon_6/screens_and_pages/web_pages/home_pages/normal_user_home_pages/helper_widgets/pdf_file_screen.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 
 import 'csv_file_screen.dart';
+import 'manually_form_screen.dart';
 
 class CustomDialogBox extends StatefulWidget {
   const CustomDialogBox({super.key});
@@ -26,7 +28,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
       ),
       child: Container(
         width: mq.width * 0.6,
-        height: 520,
+        height: 600,
         constraints: BoxConstraints(
           maxHeight: mq.height * 0.9,
         ),
@@ -35,53 +37,56 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
           color: AppColors.theme['backgroundColor'],
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Text(
-                  showNextScreen ? "Complete details" : "Select Options",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Divider(),
-                SizedBox(height: 10),
-                showNextScreen ? _nextScreenContent() : _selectionScreenContent(),
-                SizedBox(height: 10),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("Close",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
-                ),
-                if (showNextScreen)
-                  TextButton(
-                    onPressed: () {
-                      setState(() {
-                        showNextScreen = false;
-                        selectedOption = -1;
-                      });
-                    },
-                    child: Text("Prev",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
-                  ),
-                if (!showNextScreen && selectedOption != -1)
-                  TextButton(
-                    onPressed: () {
-                      setState(() {
-                        showNextScreen = true;
-                      });
-                    },
-                    child: Text("Next",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
-                  ),
 
-              ],
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    showNextScreen ? "Complete details" : "Select Options",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Divider(),
+                  SizedBox(height: 10),
+                  showNextScreen ? _nextScreenContent() : _selectionScreenContent(),
+                  SizedBox(height: 10),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Close",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
+                  ),
+                  if (showNextScreen)
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showNextScreen = false;
+                          selectedOption = -1;
+                        });
+                      },
+                      child: Text("Prev",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
+                    ),
+                  if (!showNextScreen && selectedOption != -1)
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showNextScreen = true;
+                        });
+                      },
+                      child: Text("Next",style: GoogleFonts.poppins(color: AppColors.theme['primaryColor']),),
+                    ),
+
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -111,13 +116,13 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 ),
               ),
               SizedBox(height: 8),
-              Text("1️⃣ If you have a small number of transactions, you can manually enter each one using Option 1."),
+              Text("1. If you have a small number of transactions, you can manually enter each one using Option 1."),
               SizedBox(height: 4),
-              Text("2️⃣ If you have a large amount of data, uploading a CSV file (Option 2) is a better choice."),
+              Text("2. If you have a large amount of data, uploading a CSV file (Option 2) is a better choice."),
               SizedBox(height: 4),
-              Text("3️⃣ Instead of manually entering and requesting all transactions, you can upload a CSV, and we will provide an output CSV in return."),
+              Text("3️. Instead of manually entering and requesting all transactions, you can upload a CSV, and we will provide an output CSV in return."),
               SizedBox(height: 4),
-              Text("4️⃣ After selecting an option, click 'Next' to continue."),
+              Text("4️. After selecting an option, scroll down and click 'Next' to continue."),
             ],
           ),
         ),
@@ -125,6 +130,9 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
         _buildOptionContainer(0, "Fill Form Manually", "Manually enter the details of each transaction."),
         SizedBox(height: 10),
         _buildOptionContainer(1, "Upload .CSV File", "Upload a CSV file for efficiently processing a large number of transactions."),
+        SizedBox(height: 10),
+        _buildOptionContainer(2, "Upload .PDF File", "Upload a PDF file for efficiently processing a organization's financial data."),
+
         Divider(),
       ],
     );
@@ -135,32 +143,11 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        selectedOption == 0 ? _optionOneScreen() : OptionTwoScreen(),
+        selectedOption==2 ? OptionThreeScreen() : (selectedOption == 0 ? ManuallyFormScreen() : OptionTwoScreen()),
       ],
     );
   }
 
-  /// Screen for Option 1
-  Widget _optionOneScreen() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text("This is Option 1's screen."),
-        SizedBox(height: 10),
-        _buildInputField("Enter details for Option 1"),
-      ],
-    );
-  }
-
-  /// Input Field
-  Widget _buildInputField(String hintText) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: OutlineInputBorder(),
-      ),
-    );
-  }
 
   /// Option container with selection logic
   Widget _buildOptionContainer(int index, String text, String subtext) {
@@ -185,18 +172,22 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             children: [
               CircleAvatar(
                 radius: 30,
-                child: index == 0
-                    ? Icon(
-                        Icons.assignment_rounded,
-                        color: Colors.green,
-                      )
-                    : Icon(
-                        Icons.table_chart,
-                        color: Colors.blue,
-                      ),
                 backgroundColor: index == 0
                     ? Colors.green.withOpacity(0.3)
-                    : Colors.blue.withOpacity(0.3),
+                    : (index == 1
+                    ? Colors.blue.withOpacity(0.3)
+                    : Colors.red.withOpacity(0.3)),
+
+                child: Icon(
+                  index == 0
+                      ? Icons.assignment_rounded
+                      : (index == 1
+                      ? Icons.table_chart
+                      : Icons.picture_as_pdf_outlined),
+                  color: index == 0
+                      ? Colors.green
+                      : (index == 1 ? Colors.blue : Colors.red),
+                ),
               ),
               SizedBox(width: 10),
               Column(
