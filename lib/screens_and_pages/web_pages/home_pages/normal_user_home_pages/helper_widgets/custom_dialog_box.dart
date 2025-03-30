@@ -164,7 +164,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: selectedOption == index
-                ? AppColors.theme['primaryColor']
+                ? AppColors.theme['primaryColor'].withOpacity(0.4)
                 : AppColors.theme['ghostWhiteColor'],
             borderRadius: BorderRadius.circular(10),
           ),

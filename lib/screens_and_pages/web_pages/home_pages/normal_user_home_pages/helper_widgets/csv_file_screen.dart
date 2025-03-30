@@ -2,9 +2,11 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:csv/csv.dart'; // Import CSV package
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart'; // Required for kIsWeb
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hack_nu_thon_6/apis/init/config.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/buttons/custom_button.dart';
 
@@ -35,7 +37,17 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
       if (kIsWeb) {
         fileBytes = result.files.single.bytes;
         fileName = result.files.single.name;
+
+        UploadTask task = Config.storage.ref().child("hacknuthon6/files/$fileName").putData(fileBytes!) ;
+
+        TaskSnapshot snapshot = await task;
+
+        final downloadUrl = await snapshot.ref.getDownloadURL();
+
+        print("download url : $downloadUrl") ;
+
         _parseCSV(fileBytes!);
+
       } else {
         File file = File(result.files.single.path!);
         fileName = file.path.split('/').last;
@@ -107,7 +119,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
               CircleAvatar(
                 radius: 25,
                 backgroundColor:
-                    AppColors.theme['primaryColor']!.withOpacity(0.3),
+                AppColors.theme['primaryColor']!.withOpacity(0.3),
                 child: Icon(
                   Icons.cloud_upload,
                   color: AppColors.theme['primaryColor'],
@@ -118,20 +130,20 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
               Expanded(
                 child: isUploading
                     ? LinearProgressIndicator(
-                        backgroundColor:
-                            AppColors.theme['primaryColor']!.withOpacity(0.3),
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          AppColors.theme['primaryColor']!,
-                        ),
-                      )
+                  backgroundColor:
+                  AppColors.theme['primaryColor']!.withOpacity(0.3),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    AppColors.theme['primaryColor']!,
+                  ),
+                )
                     : Text(
-                        fileName ?? "Choose CSV file",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  fileName ?? "Choose CSV file",
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               SizedBox(width: 10),
               MouseRegion(
