@@ -37,6 +37,14 @@ class _SidebarChartState extends State<SidebarChart> {
         child: Column(
           children: [
 
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Chart Analysis",style:  GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: 20),),
+              ),
+            ),
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
