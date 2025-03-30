@@ -20,7 +20,7 @@ class _SidebarChartState extends State<SidebarChart> {
   void initState(){
     super.initState();
     data = getCategoryCounts(hd);
-    // print(data) ;
+    print(data) ;
   }
 
   Map<String, int> getCategoryCounts(List<List<String>> data) {
@@ -28,8 +28,8 @@ class _SidebarChartState extends State<SidebarChart> {
     Map<String, int> counts = {
       'Credit Card': 0,
       'Health Care': 0,
-      'Safe': 0,
-      'Fraud': 0,
+      'Authorized': 0,
+      'Suspicious': 0,
       'Credit Card Safe': 0,
       'Credit Card Fraud': 0,
       'Health Care Safe': 0,
@@ -38,16 +38,17 @@ class _SidebarChartState extends State<SidebarChart> {
 
     for (var entry in data) {
       String category = entry[1];
-      String status = entry[4].toLowerCase(); // Normalize case
+      String status = entry[4].toLowerCase();
+      print(status);
 
       if (category == 'Credit Card') counts['Credit Card'] = (counts['Credit Card'] ?? 0) + 1;
       if (category == 'Health Care') counts['Health Care'] = (counts['Health Care'] ?? 0) + 1;
-      if (status == 'safe') counts['Safe'] = (counts['Safe'] ?? 0) + 1;
-      if (status == 'fraud') counts['Fraud'] = (counts['Fraud'] ?? 0) + 1;
-      if (category == 'Credit Card' && status == 'safe') counts['Credit Card Safe'] = (counts['Credit Card Safe'] ?? 0) + 1;
-      if (category == 'Credit Card' && status == 'fraud') counts['Credit Card Fraud'] = (counts['Credit Card Fraud'] ?? 0) + 1;
-      if (category == 'Health Care' && status == 'safe') counts['Health Care Safe'] = (counts['Health Care Safe'] ?? 0) + 1;
-      if (category == 'Health Care' && status == 'fraud') counts['Health Care Fraud'] = (counts['Health Care Fraud'] ?? 0) + 1;
+      if (status == 'authorized') counts['Authorized'] = (counts['Authorized'] ?? 0) + 1;
+      if (status == 'suspicious') counts['Suspicious'] = (counts['Suspicious'] ?? 0) + 1;
+      if (category == 'Credit Card' && status == 'authorized') counts['Credit Card Safe'] = (counts['Credit Card Safe'] ?? 0) + 1;
+      if (category == 'Credit Card' && status == 'suspicious') counts['Credit Card Fraud'] = (counts['Credit Card Fraud'] ?? 0) + 1;
+      if (category == 'Health Care' && status == 'authorized') counts['Health Care Safe'] = (counts['Health Care Safe'] ?? 0) + 1;
+      if (category == 'Health Care' && status == 'suspicious') counts['Health Care Fraud'] = (counts['Health Care Fraud'] ?? 0) + 1;
     }
 
     return counts;
@@ -58,8 +59,8 @@ class _SidebarChartState extends State<SidebarChart> {
   Widget build(BuildContext context) {
 
     final List<ChartData> overallData = [
-      ChartData('Safe', (data['Safe']??0).toDouble(), Colors.lightBlue),
-      ChartData('Fraud', (data['Fraud']??0).toDouble(), Colors.red),
+      ChartData('Authorized', (data['Authorized']??0).toDouble(), Colors.lightBlue),
+      ChartData('Suspicious', (data['Suspicious']??0).toDouble(), Colors.red),
     ];
 
     final List<ChartData> categoryFraudData = [

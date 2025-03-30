@@ -39,13 +39,13 @@ class _TableScreenState extends State<TableScreen> {
               String cell = entry.value;
 
               if (index == 1) {
-                return DataCell(_coloredOption(cell)); // Option column
+                return DataCell(_coloredOption(cell));
               }
               if (index == 2 || index == 3) {
-                return DataCell(_downloadButton(cell)); // Input & Output CSV
+                return DataCell(_downloadButton(cell));
               }
               if (index == 4) {
-                return DataCell(_coloredLabel(cell)); // Label column
+                return DataCell(_coloredLabel(cell));
               }
 
               return DataCell(
@@ -76,7 +76,7 @@ class _TableScreenState extends State<TableScreen> {
   }
 
   Widget _coloredLabel(String label) {
-    Color bgColor = label.toLowerCase() == "safe" ? AppColors.theme['green'] : AppColors.theme['red'] ;
+    Color bgColor = label.toLowerCase() == "authorized" ? AppColors.theme['green'] : AppColors.theme['red'] ;
     return _coloredContainer(label, bgColor,false);
   }
 

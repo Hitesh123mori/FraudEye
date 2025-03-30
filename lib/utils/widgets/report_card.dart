@@ -7,6 +7,8 @@ class ReportCard extends StatefulWidget {
   final String subtext;
   final Color color;
   final IconData icon;
+  final GestureTapCallback onTapCSV;
+  // final GestureTapCallback onTapPDF;
 
   const ReportCard({
     super.key,
@@ -14,6 +16,8 @@ class ReportCard extends StatefulWidget {
     required this.subtext,
     required this.color,
     required this.icon,
+    required this.onTapCSV,
+    // required this.onTapPDF,
   });
 
   @override
@@ -75,44 +79,40 @@ class _ReportCardState extends State<ReportCard> {
             ),
           ),
 
-          GestureDetector(
-            onTap: (){
+          // InkWell(
+          //   onTap: widget.onTapPDF,
+          //   child: MouseRegion(
+          //     cursor: SystemMouseCursors.click,
+          //     child: Container(
+          //       height: 40,
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(10),
+          //         color: AppColors.theme['op2'],
+          //       ),
+          //       child: Center(
+          //           child: Padding(
+          //             padding: const EdgeInsets.all(10.0),
+          //             child: Row(
+          //               children: [
+          //                 Image.asset(
+          //                   "assets/other_images/pdf.png",
+          //                   height: 30,
+          //                   width: 30,
+          //                 ),
+          //                 Text("PDF",style: GoogleFonts.poppins(fontWeight: FontWeight.bold),)
+          //               ],
+          //             ),
+          //           )),
+          //     ),
+          //   ),
+          // ),
 
-            },
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AppColors.theme['op2'],
-                ),
-                child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/other_images/pdf.png",
-                            height: 30,
-                            width: 30,
-                          ),
-                          Text("PDF",style: GoogleFonts.poppins(fontWeight: FontWeight.bold),)
-                        ],
-                      ),
-                    )),
-              ),
-            ),
-          ),
-
-          SizedBox(
-            width: 5,
-          ),
+          // SizedBox(
+          //   width: 5,
+          // ),
           
           GestureDetector(
-            onTap: (){
-
-            },
+            onTap: widget.onTapCSV,
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: Container(

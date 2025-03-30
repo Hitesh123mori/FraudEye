@@ -50,6 +50,9 @@ dependencies:
   csv: ^6.0.0
   url_launcher :
   syncfusion_flutter_charts: ^29.1.33
+  path_provider: ^2.1.5
+  permission_handler: ^11.4.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
