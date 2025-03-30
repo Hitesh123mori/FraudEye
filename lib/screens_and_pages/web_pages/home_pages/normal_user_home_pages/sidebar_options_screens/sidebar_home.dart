@@ -2,6 +2,29 @@ import 'package:flutter/material.dart' ;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/screens_and_pages/web_pages/home_pages/normal_user_home_pages/helper_widgets/table_normal_user.dart';
 
+
+List<List<String>> hd = [
+  ['10:22:22','Credit Card','https://morth.nic.in/sites/default/files/dd12-13_0.pdf','url2 download',"Safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
+  ['10:22:22','Health Care','url1 download','url2 download',"Fraud"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"Fraud"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
+  ['10:22:22','Health Care','url1 download','url2 download',"safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"Fraud"],
+  ['10:22:22','Health Care','url1 download','url2 download',"Fraud"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
+  ['10:22:22','Health Care','url1 download','url2 download',"safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"fraud"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
+  ['10:22:22','Health Care','url1 download','url2 download',"safe"],
+  ['10:22:22','Credit Card','url1 download','url2 download',"fraud"],
+] ;
+
+
 class SidebarHome extends StatefulWidget {
   const SidebarHome({super.key});
 
@@ -20,26 +43,9 @@ class _SidebarHomeState extends State<SidebarHome> {
           children: [
             Text("Resent Transactions",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: 20),),
             SizedBox(height: 20,),
-            TableScreen(data: [
-                ['10:22:22','Credit Card','https://morth.nic.in/sites/default/files/dd12-13_0.pdf','url2 download',"Safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
-                ['10:22:22','Health Care','url1 download','url2 download',"Fraud"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"Safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"Fraud"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
-                ['10:22:22','Health Care','url1 download','url2 download',"safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"Fraud"],
-                ['10:22:22','Health Care','url1 download','url2 download',"Fraud"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
-                ['10:22:22','Health Care','url1 download','url2 download',"safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"fraud"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"safe"],
-                ['10:22:22','Health Care','url1 download','url2 download',"safe"],
-                ['10:22:22','Credit Card','url1 download','url2 download',"fraud"],
-            ],),
+
+            TableScreen(data: hd),
+
           ],
         ),
       )
