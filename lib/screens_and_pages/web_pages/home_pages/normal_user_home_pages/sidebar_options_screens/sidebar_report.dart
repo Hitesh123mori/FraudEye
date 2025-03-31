@@ -87,7 +87,7 @@ class _SidebarReportState extends State<SidebarReport> {
   ///credit card transacations
   void CreditCardTransactionDataCSV() {
     final List<List<String>> filteredHd =
-    hd.where((row) => row[1] == "Credit Card").toList();
+    hd.where((row) => row[1] == "Transaction").toList();
 
     final List<List<String>> csvData = [columnNames, ...filteredHd];
 
@@ -96,7 +96,7 @@ class _SidebarReportState extends State<SidebarReport> {
     final blob = html.Blob([bytes]);
     final url = html.Url.createObjectUrlFromBlob(blob);
     final anchor = html.AnchorElement(href: url)
-      ..setAttribute("download", "credit_card_transactions.csv")
+      ..setAttribute("download", "transactions.csv")
       ..click();
     html.Url.revokeObjectUrl(url);
   }
@@ -174,7 +174,7 @@ class _SidebarReportState extends State<SidebarReport> {
             // onTapPDF: () {},
           ),
           ReportCard(
-            text: 'Credit Card Transactions',
+            text: 'Transactions',
             subtext: 'Download all credit card transactions',
             color: AppColors.theme['op4'],
             icon: Icons.dataset,

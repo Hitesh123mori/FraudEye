@@ -106,14 +106,17 @@ class _BankUserHomeState extends State<BankUserHome> {
                         children: [
 
                           ///logo here
-                          Container(
-                            height: 40,
-                            width: mq.width * 0.4,
-                            decoration: BoxDecoration(
-                              color: AppColors.theme['primaryColor'],
-                              borderRadius: BorderRadius.circular(10),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              height: 40,
+                              width: mq.width * 0.4,
+                              decoration: BoxDecoration(
+                                // color: AppColors.theme['primaryColor'],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Logo(),
                             ),
-                            // child: Logo(),
                           ),
 
                           SizedBox(height: 10,),
@@ -190,13 +193,6 @@ class _BankUserHomeState extends State<BankUserHome> {
                                 onTap: () => Provider.of<BankUserSidebarProvider>(context, listen: false).updateCurrent("bfrauds"),
                                 icon: Icons.report_gmailerrorred,
                                 text: 'Frauds',
-                                  role :"bank"
-                              ),
-                              SidebarItem(
-                                optionKey: "btrash",
-                                onTap: () => Provider.of<BankUserSidebarProvider>(context, listen: false).updateCurrent("btrash"),
-                                icon: Icons.delete_outline_outlined,
-                                text: 'Trash',
                                   role :"bank"
                               ),
                             ],
@@ -292,15 +288,15 @@ class _BankUserHomeState extends State<BankUserHome> {
                                               children: [
                                                 CircleAvatar(
                                                   radius: 25,
-                                                  child: Text(userProvider.user?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                                                  child: Text(userProvider.bank?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
                                                   backgroundColor: AppColors.theme['primaryColor'].withOpacity(0.6),
                                                 ),
                                                 SizedBox(width: 5,),
                                                 Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(userProvider.user?.name ?? "",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-                                                    Text(userProvider.user?.email ?? "",style: TextStyle(fontSize: 14),),
+                                                    Text(userProvider.bank?.name ?? "",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                                                    Text(userProvider.bank?.email ?? "",style: TextStyle(fontSize: 14),),
                                                   ],
                                                 )
                                               ],
@@ -315,7 +311,7 @@ class _BankUserHomeState extends State<BankUserHome> {
                                     cursor: SystemMouseCursors.click,
                                     child: CircleAvatar(
                                       radius: 25,
-                                      child: Text(userProvider.user?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                                      child: Text(userProvider.bank?.name?[0] ??"",style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
                                       backgroundColor: AppColors.theme['primaryColor'].withOpacity(0.6),
                                     ),
                                   )
@@ -346,9 +342,9 @@ class _BankUserHomeState extends State<BankUserHome> {
 
                                   if(sidebarProvider.current=="bfrauds")
                                     SidebarFraudBank(),
-
-                                  if(sidebarProvider.current=="btrash")
-                                    SidebarTrashBank(),
+                                  //
+                                  // if(sidebarProvider.current=="btrash")
+                                  //   SidebarTrashBank(),
 
                                 ],
                               ),

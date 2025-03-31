@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class FetchTransactionProvider extends ChangeNotifier {
   List<List<String>> recentHistory = [];
+  List<List<String>> allTransactions = [];
 
   Future<void> fetchHistory(BuildContext context) async {
     String? userId = Provider.of<UserProvider>(context, listen: false).user?.userID;
@@ -14,4 +15,10 @@ class FetchTransactionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> fetchAllTransacations(BuildContext context) async {
+    allTransactions = await TransactionApis.fetchAllTransactions();
+    notifyListeners();
+  }
+
 }
+

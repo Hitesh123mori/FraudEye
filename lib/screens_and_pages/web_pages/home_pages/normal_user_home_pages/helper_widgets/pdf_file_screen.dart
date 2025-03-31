@@ -16,16 +16,12 @@ class _OptionThreeScreenState extends State<OptionThreeScreen> {
 
   List<String> categories = [
     'Health Care',
-    'Credit Card',
-    'Financial statement fraud detection',
-    'Loan fraud detection'
+    'Normal',
   ];
 
   List<Icon> cicons = [
     Icon(Icons.health_and_safety_outlined),
     Icon(Icons.credit_card),
-    Icon(Icons.report_outlined),
-    Icon(Icons.money),
   ] ;
 
 

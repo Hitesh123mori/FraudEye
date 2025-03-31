@@ -9,7 +9,6 @@ class BankUserSidebarProvider extends ChangeNotifier{
     "bchart": false,
     "breports": false,
     "bfrauds": false,
-    "btrash": false,
   };
 
   String current = "bhome";

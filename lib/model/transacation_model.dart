@@ -1,5 +1,6 @@
 
 class TransacationModel {
+  final String id ;
   final String timestamp;
   final String option;
   final String inputCsvUrl;
@@ -7,6 +8,7 @@ class TransacationModel {
   final String label;
 
   TransacationModel({
+    required this.id,
     required this.timestamp,
     required this.option,
     required this.inputCsvUrl,
@@ -16,6 +18,7 @@ class TransacationModel {
 
   factory TransacationModel.fromJson(Map<String, dynamic> json) {
     return TransacationModel(
+      id: json['id'] ?? '',
       timestamp: json['timestamp'] ?? '',
       option: json['option'] ?? '',
       inputCsvUrl: json['inputCsvUrl'] ?? '',
@@ -27,6 +30,7 @@ class TransacationModel {
   Map<String, dynamic> toJson() {
     return {
       'timestamp': timestamp,
+      'id' :id,
       'option': option,
       'inputCsvUrl': inputCsvUrl,
       'outputCsvUrl': outputCsvUrl,

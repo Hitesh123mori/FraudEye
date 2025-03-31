@@ -33,12 +33,12 @@ class _SidebarChartState extends State<SidebarChart> {
   Map<String, int> getCategoryCounts(List<List<String>> data) {
 
     Map<String, int> counts = {
-      'Credit Card': 0,
+      'Transaction': 0,
       'Health Care': 0,
       'Authorized': 0,
       'Suspicious': 0,
-      'Credit Card Safe': 0,
-      'Credit Card Fraud': 0,
+      'Transaction Safe': 0,
+      'Transaction Fraud': 0,
       'Health Care Safe': 0,
       'Health Care Fraud': 0,
     };
@@ -48,12 +48,12 @@ class _SidebarChartState extends State<SidebarChart> {
       String status = entry[4].toLowerCase();
       // print(status);
 
-      if (category == 'Credit Card') counts['Credit Card'] = (counts['Credit Card'] ?? 0) + 1;
+      if (category == 'Transaction') counts['Transaction'] = (counts['Transaction'] ?? 0) + 1;
       if (category == 'Health Care') counts['Health Care'] = (counts['Health Care'] ?? 0) + 1;
       if (status == 'authorized') counts['Authorized'] = (counts['Authorized'] ?? 0) + 1;
       if (status == 'suspicious') counts['Suspicious'] = (counts['Suspicious'] ?? 0) + 1;
-      if (category == 'Credit Card' && status == 'authorized') counts['Credit Card Safe'] = (counts['Credit Card Safe'] ?? 0) + 1;
-      if (category == 'Credit Card' && status == 'suspicious') counts['Credit Card Fraud'] = (counts['Credit Card Fraud'] ?? 0) + 1;
+      if (category == 'Transaction' && status == 'authorized') counts['Transaction Safe'] = (counts['Transaction Safe'] ?? 0) + 1;
+      if (category == 'Transaction' && status == 'suspicious') counts['Transaction Fraud'] = (counts['Transaction Fraud'] ?? 0) + 1;
       if (category == 'Health Care' && status == 'authorized') counts['Health Care Safe'] = (counts['Health Care Safe'] ?? 0) + 1;
       if (category == 'Health Care' && status == 'suspicious') counts['Health Care Fraud'] = (counts['Health Care Fraud'] ?? 0) + 1;
     }
@@ -71,13 +71,13 @@ class _SidebarChartState extends State<SidebarChart> {
     ];
 
     final List<ChartData> categoryFraudData = [
-      ChartData('Credit Card', (data['Credit Card'] ?? 0).toDouble(), Colors.orange),
+      ChartData('Transaction', (data['Transaction'] ?? 0).toDouble(), Colors.orange),
       ChartData('Health Care', (data['Health Care'] ?? 0).toDouble(), Colors.purple),
     ];
 
     final List<ChartData> categoryComparisonData = [
-      ChartData('Credit Card - Safe', (data['Credit Card Safe'] ?? 0).toDouble(), Colors.lightBlue),
-      ChartData('Credit Card - Fraud', (data['Credit Card Fraud'] ?? 0).toDouble(), Colors.red),
+      ChartData('Transaction - Safe', (data['Transaction Safe'] ?? 0).toDouble(), Colors.lightBlue),
+      ChartData('Transaction - Fraud', (data['Transaction Fraud'] ?? 0).toDouble(), Colors.red),
       ChartData('Health Care - Safe', (data['Health Care Safe'] ?? 0).toDouble(), Colors.lightBlue),
       ChartData('Health Care - Fraud', (data['Health Care Fraud'] ?? 0).toDouble(), Colors.red),
     ];
@@ -108,15 +108,15 @@ class _SidebarChartState extends State<SidebarChart> {
                   SizedBox(width: 10),
                   _buildChartContainer('Fraud Rate Percentage by Category', [
                     ChartData(
-                      'Credit Card Fraud',
-                      ((data['Credit Card Fraud'] ?? 0).toDouble() /
-                          ((data['Health Care Fraud'] ?? 0) + (data['Credit Card Fraud'] ?? 0)).toDouble()) * 100,
+                      'Transaction Fraud',
+                      ((data['Transaction Fraud'] ?? 0).toDouble() /
+                          ((data['Health Care Fraud'] ?? 0) + (data['Transaction Fraud'] ?? 0)).toDouble()) * 100,
                       Colors.orange,
                     ),
                     ChartData(
                       'Health Care Fraud',
                       ((data['Health Care Fraud'] ?? 0).toDouble() /
-                          ((data['Health Care Fraud'] ?? 0) + (data['Credit Card Fraud'] ?? 0)).toDouble()) * 100,
+                          ((data['Health Care Fraud'] ?? 0) + (data['Transaction Fraud'] ?? 0)).toDouble()) * 100,
                       Colors.red,
                     ),
 

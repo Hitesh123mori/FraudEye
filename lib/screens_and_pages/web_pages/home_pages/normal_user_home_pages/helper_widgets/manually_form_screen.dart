@@ -126,7 +126,7 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "This is for credit card fraud detection only.",
+              "This is for Transaction fraud detection only.",
               style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -182,7 +182,6 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
                   color: Colors.black, fontWeight: FontWeight.bold), // Text color
               items: [
                 'Purchase',
-                'Cash Advance',
                 'Adjustment',
                 'Payment',
                 'Refund'
@@ -269,6 +268,7 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
               textColor: Colors.white,
               bgColor: AppColors.theme['primaryColor'],
               onTap: () async {
+
                 String label = await handleSubmit();
 
                 List<String> columnNames = [
@@ -391,10 +391,11 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
 
                 TransacationModel tmodel = TransacationModel(
                   timestamp: DateTime.now().toString(),
-                  option: "Credit Card",
+                  option: "Transaction",
                   inputCsvUrl: downloadUrl,
                   outputCsvUrl: downloadUrl2,
                   label: label,
+                  id: ''
                 );
 
                 await TransactionApis.addTransaction(userProvider.user?.userID ?? "", tmodel);
