@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' ;
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hack_nu_thon_6/utils/theme/theme.dart';
+
 
 
 class Logo extends StatelessWidget {
@@ -8,11 +7,6 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text("Some",style: GoogleFonts.ebGaramond(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,color: AppColors.theme['primaryColor'],fontSize: 25),),
-        Text("Text",style: GoogleFonts.ebGaramond(fontWeight: FontWeight.bold,color: AppColors.theme['primaryColor'],fontSize: 25),)
-      ],
-    );
+    return Image.asset("assets/other_images/brand-logo.png",height: 200,width: 200,);
   }
 }

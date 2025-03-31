@@ -100,14 +100,17 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                        children: [
 
                          ///logo here
-                         Container(
-                           height: 40,
-                           width: mq.width * 0.4,
-                           decoration: BoxDecoration(
-                             color: AppColors.theme['primaryColor'],
-                             borderRadius: BorderRadius.circular(10),
+                         Padding(
+                           padding: const EdgeInsets.all(20.0),
+                           child: Container(
+                             height: 40,
+                             width: mq.width * 0.4,
+                             decoration: BoxDecoration(
+                               // color: AppColors.theme['primaryColor'],
+                               borderRadius: BorderRadius.circular(10),
+                             ),
+                             child: Logo(),
                            ),
-                           // child: Logo(),
                          ),
 
                          SizedBox(height: 10,),
@@ -126,7 +129,7 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                              width: 100,
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(15),
-                               color: AppColors.theme['backgroundColor'],
+                               color: AppColors.theme['primaryColor'],
                                boxShadow: [
                                  BoxShadow(
                                    color: Colors.black.withOpacity(0.2),
@@ -138,15 +141,16 @@ class _NormalUserHomeState extends State<NormalUserHome> {
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.center,
                                children: [
-                                 Icon(Icons.add),
+                                 Icon(Icons.add,color: Colors.white,),
                                  SizedBox(width: 8),
-                                 Text("ADD"),
+                                 Text("ADD",style: TextStyle(color: Colors.white),),
                                ],
                              ),
                            ),
                          ),
                        ),
 
+                         SizedBox(height: 10,),
                        Divider(),
                        ],
                      ),

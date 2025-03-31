@@ -173,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 20, bottom: 10),
+                padding: const EdgeInsets.only(right: 60, bottom: 10),
                 child: Container(
                   height: 450,
                   decoration: BoxDecoration(
@@ -195,14 +195,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
-                              "LOGO HERE",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color:  AppColors.theme['primaryColor']
-                              ),
-                            ),
+                              Text("R E G I S T E R",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColors.theme['primaryColor']),),
+                              SizedBox(height: 20,),
                               SizedBox(height: 10),
                               Container(
                                 height: 50,

@@ -20,7 +20,7 @@ class _SidebarChartState extends State<SidebarChart> {
   void initState(){
     super.initState();
     data = getCategoryCounts(hd);
-    print(data) ;
+    // print(data) ;
   }
 
   Map<String, int> getCategoryCounts(List<List<String>> data) {
@@ -39,7 +39,7 @@ class _SidebarChartState extends State<SidebarChart> {
     for (var entry in data) {
       String category = entry[1];
       String status = entry[4].toLowerCase();
-      print(status);
+      // print(status);
 
       if (category == 'Credit Card') counts['Credit Card'] = (counts['Credit Card'] ?? 0) + 1;
       if (category == 'Health Care') counts['Health Care'] = (counts['Health Care'] ?? 0) + 1;

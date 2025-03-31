@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/apis/auth_apis/auth_apis.dart';
 import 'package:hack_nu_thon_6/provider/router_provider.dart';
 import 'package:hack_nu_thon_6/utils/helper_functions/web_toast.dart';
+import 'package:hack_nu_thon_6/utils/logo.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/buttons/custom_button.dart';
 import 'package:hack_nu_thon_6/utils/widgets/text_feild/custom_text_feild.dart';
@@ -152,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
             Expanded(child: Image.asset("assets/ils/login_ills.png",height: 450,width: 450,)),
 
             Padding(
-              padding: const EdgeInsets.only(right: 20,bottom: 60),
+              padding: const EdgeInsets.only(right: 60,bottom: 60),
               child: Container(
                 height: 350,
                 decoration: BoxDecoration(
@@ -173,15 +174,8 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisSize: MainAxisSize.min,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "LOGO HERE",
-                          style: GoogleFonts.poppins(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color:  AppColors.theme['primaryColor']
-                          ),
-                        ),
-                        SizedBox(height: 20),
+                        Text("L O G I N",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColors.theme['primaryColor']),),
+                        SizedBox(height: 20,),
                         Container(
                           height: 50,
                           width: 300,

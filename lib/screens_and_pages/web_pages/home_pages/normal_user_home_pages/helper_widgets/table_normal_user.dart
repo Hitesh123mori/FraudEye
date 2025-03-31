@@ -119,11 +119,12 @@ class _TableScreenState extends State<TableScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/other_images/csv.png",height: 30,width: 30,),
+              // Image.asset("assets/other_images/csv.png",height: 30,width: 30,),
+              Icon(Icons.download,size: 15,color: AppColors.theme['primaryColor']),
               SizedBox(width: 5),
               Text(
                 "Download",
-                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(color:AppColors.theme['primaryColor'], fontWeight: FontWeight.bold),
               ),
             ],
           ),
