@@ -186,7 +186,7 @@ class _PdfFileScreenBankState extends State<PdfFileScreenBank> {
               },
               title: "Generate Report",
               isLoading: isLoading,
-              loadWidth: 40,
+              loadWidth: 120,
             ),
           ],
         ),

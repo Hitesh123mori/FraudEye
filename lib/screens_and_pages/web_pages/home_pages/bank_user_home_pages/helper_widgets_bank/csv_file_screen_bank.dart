@@ -99,7 +99,9 @@ class _CsvFileScreenBankState extends State<CsvFileScreenBank> {
     print("Starting request with row: $row");
     String res = "0";
 
-    isLoading = true;
+    setState(() {
+      isLoading = true;
+    });
 
     const String apiUrl = "http://10.21.9.224:5000/predict";
 
@@ -137,7 +139,9 @@ class _CsvFileScreenBankState extends State<CsvFileScreenBank> {
       return res;
     } catch (e) {
       print("Error during request: $e");
-      isLoading = false;
+      setState(() {
+        isLoading = false;
+      });
       return "0";
     }
   }
@@ -479,7 +483,7 @@ class _CsvFileScreenBankState extends State<CsvFileScreenBank> {
               },
               title: "Generate Report",
               isLoading: isLoading,
-              loadWidth: 40,
+              loadWidth: 120,
             ),
           ],
         ),

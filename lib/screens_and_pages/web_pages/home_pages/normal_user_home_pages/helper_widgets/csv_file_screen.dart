@@ -479,7 +479,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
               },
               title: "Generate Report",
               isLoading: isLoading,
-              loadWidth: 40,
+              loadWidth: 120,
             ),
           ],
         ),

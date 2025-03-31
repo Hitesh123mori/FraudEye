@@ -200,7 +200,7 @@ class _OptionThreeScreenState extends State<OptionThreeScreen> {
               },
               title: "Generate Report",
               isLoading: isLoading,
-              loadWidth: 40,
+              loadWidth: 120,
             ),
           ],
         ),

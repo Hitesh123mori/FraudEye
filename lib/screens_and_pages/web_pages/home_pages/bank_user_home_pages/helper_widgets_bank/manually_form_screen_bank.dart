@@ -100,6 +100,11 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
               color: Colors.green,
             ),
             context);
+
+        setState(() {
+          isLoading = false;
+        });
+
       } else {
         WebToasts.showToastification(
             "Error",
@@ -403,9 +408,7 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
                 final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
                 await fetchTransactionProvider.fetchHistory(context);
 
-                setState(() {
-                  isLoading = false;
-                });
+
 
 
               },

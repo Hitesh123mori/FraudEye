@@ -44,9 +44,9 @@ class CustomButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 25,
-                  width: 25,
-                  child: CircularProgressIndicator(color: textColor),
+                  height: 15,
+                  width: 15,
+                  child: Center(child: CircularProgressIndicator(color: textColor)),
                 ),
                 SizedBox(width: 10),
                 Text(
