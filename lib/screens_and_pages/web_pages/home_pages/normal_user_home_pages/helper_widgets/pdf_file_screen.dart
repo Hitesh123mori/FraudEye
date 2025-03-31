@@ -16,7 +16,7 @@ class _OptionThreeScreenState extends State<OptionThreeScreen> {
 
   List<String> categories = [
     'Health Care',
-    'Normal',
+    'Transaction',
   ];
 
   List<Icon> cicons = [

@@ -66,19 +66,18 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
   }
 
 
-  // add to csv
-  void addToCSV(List<dynamic> row,List<List<dynamic>> dataCSV) {
-    setState(() {
-      dataCSV.add(row);
-    });
-  }
+  // // add to csv
+  // void addToCSV(List<dynamic> row,List<List<dynamic>> dataCSV) {
+  //   setState(() {
+  //     dataCSV.add(row);
+  //   });
+  // }
 
 
   /// for normal transaction
   Future<String> RequestNormalTransaction(List<dynamic> row) async {
 
     List<String> columnNames = [
-      "timestamp",
       "customer_id",
       "merchant_id",
       "transaction_amount",
@@ -174,7 +173,6 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
 
 
   Future<void> handleButton(BuildContext context) async {
-
     if (fileBytes == null || fileBytes!.isEmpty) {
       print("Error: File is empty or null.");
       return;
@@ -183,15 +181,21 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
     _parseCSV(fileBytes!);
 
     // Upload input CSV
-    UploadTask task1 = Config.storage.ref().child("hacknuthon6/files/input_data_${DateTime.now()}.csv").putData(fileBytes!);
+    UploadTask task1 = Config.storage
+        .ref()
+        .child("hacknuthon6/files/input_data_${DateTime.now()}.csv")
+        .putData(fileBytes!);
     TaskSnapshot snapshot1 = await task1;
     final inputUrl = await snapshot1.ref.getDownloadURL();
-    print("Input CSV URL: $inputUrl");
+
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final fetchProvider =
+    Provider.of<FetchTransactionProvider>(context, listen: false);
 
     if (selectedCategory == "Transaction") {
+      List<TransacationModel> tlm = [];
 
       List<dynamic> columnNames2 = [
-        "timestamp",
         "customer_id",
         "merchant_id",
         "transaction_amount",
@@ -211,47 +215,41 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
       ];
 
       final List<List<dynamic>> csvData2 = [columnNames2];
+      final List<List<dynamic>> tempCsvData = List.from(csvData);
 
-      for (int i = 1; i < csvData.length; i++) {
-        final res1 = await RequestNormalTransaction(csvData[i]);
-        csvData[i].add(res1);
-        addToCSV(csvData[i], csvData2);
+      for (int i = 1; i < tempCsvData.length; i++) {
+        final res1 = await RequestNormalTransaction(tempCsvData[i]);
+        tempCsvData[i].add(res1);
+        // addToCSV(tempCsvData[i], csvData2);
 
         TransacationModel tmodel = TransacationModel(
           timestamp: DateTime.now().toString(),
           option: selectedCategory ?? "",
           inputCsvUrl: inputUrl,
-          outputCsvUrl: "", // Will be updated later
-          label: res1,
+          outputCsvUrl: "",
+          label: res1[1],
           id: '',
         );
 
-        final userProvider = Provider.of<UserProvider>(context, listen: false);
-        final fetchProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
-        await fetchProvider.fetchHistory(context) ;
-
+        tlm.add(tmodel);
         await TransactionApis.addTransaction(userProvider.user?.userID ?? "", tmodel);
-
-
       }
+
+      await fetchProvider.fetchHistory(context);
 
       String csvString2 = const ListToCsvConverter().convert(csvData2);
       final bytes2 = utf8.encode(csvString2);
 
-      final blob2 = html.Blob([bytes2]);
-      final url2 = html.Url.createObjectUrlFromBlob(blob2);
-      final anchor2 = html.AnchorElement(href: url2)
-        ..setAttribute("download", "output_data_${DateTime.now()}.csv")
-        ..click();
-      html.Url.revokeObjectUrl(url2);
-
-      UploadTask task2 = Config.storage.ref().child("output_data_${DateTime.now()}.csv").putData(bytes2);
+      UploadTask task2 = Config.storage
+          .ref()
+          .child("output_data_${DateTime.now()}.csv")
+          .putData(bytes2);
       TaskSnapshot snapshot2 = await task2;
       final outputUrl = await snapshot2.ref.getDownloadURL();
 
       print("Output CSV URL: $outputUrl");
 
-      } else {
+    } else {
 
       List<dynamic> columnNames3 = [
         "PerProviderAvg_InscClaimAmtReimbursed",
@@ -282,7 +280,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
         final res2 = await requestHealthCareTransaction(csvData[i]);
         print(res2);
         csvData[i].add(res2);
-        addToCSV(csvData[i], csvData);
+        // addToCSV(csvData[i], csvData);
 
         TransacationModel tmodel = TransacationModel(
           timestamp: DateTime.now().toString(),
@@ -302,6 +300,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
 
     }
   }
+
 
   Future<void> _pickCSVFile() async {
 

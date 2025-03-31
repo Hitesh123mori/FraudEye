@@ -53,6 +53,7 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
   Future<String> handleSubmit() async {
 
     String res = "0";
+
     setState(() {
       isLoading = true;
     });
@@ -115,6 +116,7 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
             ),
             context);
       }
+
       return res;
     } catch (e) {
       print(e);
@@ -321,10 +323,10 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
                 final bytes = utf8.encode(csvString);
                 final blob = html.Blob([bytes]);
                 final url = html.Url.createObjectUrlFromBlob(blob);
-                final anchor = html.AnchorElement(href: url)
-                  ..setAttribute("download", "input_data_${DateTime.now().toString()}.csv")
-                  ..click();
-                html.Url.revokeObjectUrl(url);
+                // final anchor = html.AnchorElement(href: url)
+                //   ..setAttribute("download", "input_data_${DateTime.now().toString()}.csv")
+                //   ..click();
+                // html.Url.revokeObjectUrl(url);
 
                 UploadTask task = Config.storage.ref().child("hacknuthon6/files/input_data_${DateTime.now().toString()}.csv").putData(bytes) ;
 
@@ -381,9 +383,9 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
                 final bytes2 = utf8.encode(csvString2);
                 final blob2 = html.Blob([bytes2]);
                 final url2 = html.Url.createObjectUrlFromBlob(blob2);
-                final anchor2 = html.AnchorElement(href: url2)
-                  ..setAttribute("download", "output_data_${DateTime.now().toString()}.csv")
-                  ..click();
+                // final anchor2 = html.AnchorElement(href: url2)
+                //   ..setAttribute("download", "output_data_${DateTime.now().toString()}.csv")
+                //   ..click();
                 html.Url.revokeObjectUrl(url);
 
                 UploadTask task2 = Config.storage.ref().child("output_data_${DateTime.now().toString()}.csv").putData(bytes2) ;
@@ -408,8 +410,9 @@ class _ManuallyFormScreenBankState extends State<ManuallyFormScreenBank> {
                 final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
                 await fetchTransactionProvider.fetchHistory(context);
 
-
-
+                setState(() {
+                  isLoading = false;
+                });
 
               },
               title: "Generate Report",
