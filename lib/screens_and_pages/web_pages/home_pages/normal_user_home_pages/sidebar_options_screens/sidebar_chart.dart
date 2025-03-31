@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hack_nu_thon_6/provider/fetch_transaction_provider.dart';
 import 'package:hack_nu_thon_6/screens_and_pages/web_pages/home_pages/normal_user_home_pages/sidebar_options_screens/sidebar_home.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SidebarChart extends StatefulWidget {
@@ -13,15 +15,20 @@ class SidebarChart extends StatefulWidget {
 
 class _SidebarChartState extends State<SidebarChart> {
 
-  Map<String, int> data = {} ;
-
+  List<List<String>> hd = [] ;
 
   @override
   void initState(){
     super.initState();
+    final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
+    fetchTransactionProvider.fetchHistory(context);
+    hd = fetchTransactionProvider.recentHistory;
     data = getCategoryCounts(hd);
-    // print(data) ;
+
   }
+
+
+  Map<String, int> data = {} ;
 
   Map<String, int> getCategoryCounts(List<List<String>> data) {
 

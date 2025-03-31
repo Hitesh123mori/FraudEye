@@ -23,6 +23,33 @@ class TransactionApis {
     }
   }
 
+  /// Fetches all transactions of a particular user.
+  static Future<List<List<String>>> fetchUserTransactions(String userId) async {
+    List<List<String>> transactionsList = [];
+    try {
+      var snapshot = await _collectionRefNormal
+          .doc(userId)
+          .collection("transactions")
+          .get();
+
+      for (var doc in snapshot.docs) {
+        var data = doc.data();
+        String labelValue = (data["label"] ?? "").toString();
+
+        transactionsList.add([
+          data["timestamp"] ?? "",
+          data["option"] ?? "",
+          data["inputCsvUrl"] ?? "",
+          data["outputCsvUrl"] ?? "",
+          (labelValue == "0") ? "Authorized" : "Suspicious"
+        ]);
+      }
+    } catch (e) {
+      print("Error fetching transactions: $e");
+    }
+    return transactionsList;
+  }
+
 
 
 }

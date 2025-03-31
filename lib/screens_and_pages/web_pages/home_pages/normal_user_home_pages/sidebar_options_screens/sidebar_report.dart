@@ -3,9 +3,11 @@ import 'dart:html' as html;
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hack_nu_thon_6/provider/fetch_transaction_provider.dart';
 import 'package:hack_nu_thon_6/screens_and_pages/web_pages/home_pages/normal_user_home_pages/sidebar_options_screens/sidebar_home.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
 import 'package:hack_nu_thon_6/utils/widgets/report_card.dart';
+import 'package:provider/provider.dart';
 
 class SidebarReport extends StatefulWidget {
   const SidebarReport({super.key});
@@ -15,6 +17,15 @@ class SidebarReport extends StatefulWidget {
 }
 
 class _SidebarReportState extends State<SidebarReport> {
+
+  List<List<String>> hd = [] ;
+
+  @override
+  void initState(){
+    super.initState();
+    final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
+    hd = fetchTransactionProvider.recentHistory;
+  }
 
   List<String> columnNames = ["TimeStamp", "Option", "Input CSV", "OutputCSV", "Label"];
 

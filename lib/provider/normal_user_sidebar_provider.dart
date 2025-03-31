@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' ;
 
 class NormalUserSidebarProvider extends ChangeNotifier{
 
-
   Map<String, bool> sidebarOptions = {
     "home": true,
     "chart": false,

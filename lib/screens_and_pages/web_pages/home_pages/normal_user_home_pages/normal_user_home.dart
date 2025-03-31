@@ -3,6 +3,7 @@ import 'package:flutter_popup/flutter_popup.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hack_nu_thon_6/main.dart';
+import 'package:hack_nu_thon_6/provider/fetch_transaction_provider.dart';
 import 'package:hack_nu_thon_6/provider/normal_user_sidebar_provider.dart';
 import 'package:hack_nu_thon_6/provider/router_provider.dart';
 import 'package:hack_nu_thon_6/provider/user_provider.dart';
@@ -30,12 +31,15 @@ class NormalUserHome extends StatefulWidget {
 class _NormalUserHomeState extends State<NormalUserHome> {
   void init(UserProvider userProvider) async {
     await userProvider.initUser();
+    final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
+
+    await fetchTransactionProvider.fetchHistory(context);
+
   }
 
   @override
   void initState() {
     super.initState();
-
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     init(userProvider);
   }

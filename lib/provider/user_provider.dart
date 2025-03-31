@@ -49,6 +49,7 @@ class UserProvider extends ChangeNotifier {
      }
 
     notifyListeners();
+
     log("#initUser complete");
   }
 

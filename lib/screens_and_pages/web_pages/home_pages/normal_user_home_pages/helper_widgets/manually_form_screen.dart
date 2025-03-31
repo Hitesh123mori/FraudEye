@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hack_nu_thon_6/apis/init/config.dart';
 import 'package:hack_nu_thon_6/apis/normal_user_apis/transaction_apis.dart';
 import 'package:hack_nu_thon_6/model/transacation_model.dart';
+import 'package:hack_nu_thon_6/provider/fetch_transaction_provider.dart';
 import 'package:hack_nu_thon_6/provider/user_provider.dart';
 import 'package:hack_nu_thon_6/utils/helper_functions/web_toast.dart';
 import 'package:hack_nu_thon_6/utils/theme/theme.dart';
@@ -386,7 +387,7 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
 
                 final downloadUrl2 = await snapshot2.ref.getDownloadURL();
 
-                print(downloadUrl2);
+                // print(downloadUrl2);
 
                 TransacationModel tmodel = TransacationModel(
                   timestamp: DateTime.now().toString(),
@@ -398,10 +399,18 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
 
                 await TransactionApis.addTransaction(userProvider.user?.userID ?? "", tmodel);
 
+                final fetchTransactionProvider = Provider.of<FetchTransactionProvider>(context, listen: false);
+                await fetchTransactionProvider.fetchHistory(context);
+
+                setState(() {
+                  isLoading = false;
+                });
+
+
               },
               title: "Generate Report",
               isLoading: isLoading,
-              loadWidth: 40,
+              loadWidth: 100,
             ),
           ],
         ),
