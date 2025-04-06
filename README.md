@@ -1,6 +1,6 @@
 ## Important Urls:
 
-### `Health Care API` : https://github.com/RamaniSaumya/FRAUDEYE
+#### `Normal Transaction API` : https://github.com/RamaniSaumya/FRAUDEYE
 
 
 ---
