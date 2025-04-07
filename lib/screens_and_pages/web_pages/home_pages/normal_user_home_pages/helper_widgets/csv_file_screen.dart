@@ -100,7 +100,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
 
     isLoading = true;
 
-    const String apiUrl = "http://10.21.9.224:5000/predict";
+    const String apiUrl = "https://fraudeye.onrender.com/predict";
 
     if (columnNames.length != row.length) {
       print("Error: Column names and row values count mismatch.");
@@ -146,7 +146,7 @@ class _OptionTwoScreenState extends State<OptionTwoScreen> {
 
     String requestBody = jsonEncode(row);
 
-    const String apiUrl = "http://10.21.25.124:5000/predict";
+    const String apiUrl = "https://healthcare-api-pef7.onrender.com/predict";
 
     try {
       final response = await http.post(

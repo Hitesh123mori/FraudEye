@@ -1,1 +1,36 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"hacknuthon-5ae21","appId":"1:296920310204:android:b2fa4eed06bd4b1adb4bb9","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"hacknuthon-5ae21","configurations":{"android":"1:296920310204:android:b2fa4eed06bd4b1adb4bb9","web":"1:296920310204:web:6341bdaf50474684db4bb9"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "fraud-eye-6",
+          "appId": "1:420156631478:android:45316fb2c8d96d07bf3917",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "fraud-eye-6",
+          "configurations": {
+            "android": "1:420156631478:android:45316fb2c8d96d07bf3917",
+            "web": "1:420156631478:web:b6d21b314c66214cbf3917"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

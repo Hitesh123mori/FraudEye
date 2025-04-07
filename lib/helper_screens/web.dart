@@ -13,7 +13,7 @@ class _WebState extends State<Web> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'HackNuThon 6.0',
+      title: 'FraudEye',
       theme: ThemeData(
         useMaterial3: true,
       ),

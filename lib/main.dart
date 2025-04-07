@@ -62,19 +62,21 @@ _intializeFirebase() async {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
 
-  if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.windows) {
+
     await Firebase.initializeApp(
         name: 'hacknuthon_1',
         options: const FirebaseOptions(
-          apiKey: 'AIzaSyAn9hrLrjtwQ16E-ZSanmZnCYCi0HTu1E0',
-          appId: '1:296920310204:web:6341bdaf50474684db4bb9',
-          messagingSenderId: '296920310204',
-          projectId: 'hacknuthon-5ae21',
-          storageBucket: 'hacknuthon-5ae21.firebasestorage.app',
-        ));
-  }
+          apiKey: 'AIzaSyA-s0uhALPRV-JNpYunqRwsGkSI62Wd0do',
+          appId: '1:420156631478:web:b6d21b314c66214cbf3917',
+          messagingSenderId: '420156631478',
+          projectId: 'fraud-eye-6',
+          authDomain: 'fraud-eye-6.firebaseapp.com',
+          storageBucket: 'fraud-eye-6.firebasestorage.app',
+          measurementId: 'G-VJN72VW039',
+        )
+    );
 
-  if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.windows) {
+
     await Firebase.initializeApp(
         name: 'hacknuthon_2',
         options: const FirebaseOptions(
@@ -85,5 +87,7 @@ _intializeFirebase() async {
           storageBucket: 'mori-hitesh.appspot.com',
         )
     );
-  }
+
+
+
 }

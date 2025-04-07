@@ -57,7 +57,7 @@ class _ManuallyFormScreenState extends State<ManuallyFormScreen> {
       isLoading = true;
     });
 
-    const String apiUrl = "http://10.21.9.224:5000/predict";
+    const String apiUrl = "https://fraudeye.onrender.com/predict";
 
     Map<String, dynamic> requestBody = {
       "customer_id": customerIdController.text.trim(),
